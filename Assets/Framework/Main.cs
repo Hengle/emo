@@ -33,7 +33,7 @@ namespace emo
         {
             if (_updateFunc != null)
             {
-                _updateFunc.Call();
+                _updateFunc.Action();
             }
         }
 
@@ -41,7 +41,7 @@ namespace emo
         {
             if (_fixedUpdateFunc != null)
             {
-                _fixedUpdateFunc.Call();
+                _fixedUpdateFunc.Action();
             }
         }
 
@@ -49,7 +49,7 @@ namespace emo
         {
             if (_lateUpdateFunc != null)
             {
-                _lateUpdateFunc.Call();
+                _lateUpdateFunc.Action();
             }
         }
 
