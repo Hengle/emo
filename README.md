@@ -1,6 +1,6 @@
 # emo
 
-emo 是一个基于 xasset & xLua 的轻量客户端业务开发框架。xasset 是一个简易轻量的 Unity 资源管理框架，xLua为Unity、 .Net、 Mono等C#环境增加Lua脚本编程的能力，借助xLua，这些Lua代码可以方便的和C#相互调用。如果对 xasset & xLua 需要了解更多，请参考：
+emo 是一个基于 xasset & xLua 的轻量客户端业务开发框架。xasset 是一个简易轻量的 Unity 资源管理框架，xLua为Unity、 .Net、 Mono等C#环境增加Lua脚本编程的能力，如果对 xasset & xLua 需要了解更多，请参考：
 
 - xasset https://github.com/xasset/xasset
 - xLua https://github.com/Tencent/xLua
