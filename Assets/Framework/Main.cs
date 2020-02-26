@@ -33,7 +33,7 @@ namespace emo
         {
             if (_updateFunc != null)
             {
-                _updateFunc.Action();
+                _updateFunc.Action(Time.deltaTime);
             }
         }
 
@@ -41,7 +41,7 @@ namespace emo
         {
             if (_fixedUpdateFunc != null)
             {
-                _fixedUpdateFunc.Action();
+                _fixedUpdateFunc.Action(Time.deltaTime);
             }
         }
 
@@ -49,7 +49,7 @@ namespace emo
         {
             if (_lateUpdateFunc != null)
             {
-                _lateUpdateFunc.Action();
+                _lateUpdateFunc.Action(Time.deltaTime);
             }
         }
 
