@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using xasset;
+using libx;
 using XLua;
 
 namespace emo
@@ -10,7 +10,7 @@ namespace emo
     {
         private static LuaEnv luaEnv = new LuaEnv(); 
         private static List<LuaBehaviour> luaBehaviours = new List<LuaBehaviour>();
-        private static Dictionary<string, Asset> assets = new Dictionary<string, Asset>();
+        private static Dictionary<string, AssetRequest> assets = new Dictionary<string, AssetRequest>();
 
         public static void Register(LuaBehaviour lua)
         {
@@ -22,28 +22,18 @@ namespace emo
             luaBehaviours.Remove(lua);
         }
 
-        public static void Init(Action succes)
+        public static void Init(bool assetBundleMode)
         {
-            Action onSuccess = delegate
+            if (assetBundleMode)
             {
-                if (Utility.assetBundleMode)
-                {
-                    luaEnv.AddLoader(ReadBytesFromAssetBundle);
-                    OnInited(succes);
-                }
-                else
-                {
-                    luaEnv.AddLoader(ReadBytesFromEditor);
-                    OnInited(succes);
-                }
-            };
-
-            Action<string> onError = delegate (string e)
+                luaEnv.AddLoader(ReadBytesFromAssetBundle);
+            }
+            else
             {
-                Debug.LogError(e);
-            };
+                luaEnv.AddLoader(ReadBytesFromEditor); 
+            }
 
-            Assets.Initialize(onSuccess, onError);
+            luaEnv.DoString("require 'Main'"); 
         }
 
         public static void Clear()
@@ -67,17 +57,7 @@ namespace emo
             luaEnv.Dispose();
             luaEnv = null;
             Debug.Log("[LuaManager]Dispose");
-        }
-
-        public static void OnInited(Action cb)
-        { 
-            luaEnv.DoString("require 'main'");
-            if (cb != null)
-            {
-                cb.Invoke();
-                cb = null;
-            }
-        }
+        } 
 
         public static T GetFunc<T>(string name)
         {
@@ -87,10 +67,10 @@ namespace emo
         private static byte[] ReadBytesFromAssetBundle(ref string filepath)
         {
             var path = "Assets/Bytes/Lua/" + filepath + ".lua.bytes";
-            Asset a; 
+            AssetRequest a; 
             if (!assets.TryGetValue(path, out a))
             {
-                a = Assets.Load(path, typeof(TextAsset));
+                a = Assets.LoadAsset(path, typeof(TextAsset));
                 assets[path] = a;
             }
             var ta = a.asset as TextAsset;

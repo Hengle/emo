@@ -51,15 +51,19 @@
 		
 	</assembly>
 
+	<assembly fullname="libx-runtime">
+	    <type fullname="libx.Assets" preserve="all"/>
+		<type fullname="libx.AssetRequest" preserve="all"/>
+		<type fullname="libx.BundleAssetRequest" preserve="all"/>
+		<type fullname="libx.BundleAssetAsyncRequest" preserve="all"/>
+		<type fullname="libx.SceneAssetRequest" preserve="all"/>
+		<type fullname="libx.SceneAssetAsyncRequest" preserve="all"/>
+		<type fullname="libx.WebAssetRequest" preserve="all"/>
+		
+	</assembly>
+
 	<assembly fullname="Assembly-CSharp">
-	    <type fullname="xasset.Assets" preserve="all"/>
-		<type fullname="xasset.Asset" preserve="all"/>
-		<type fullname="xasset.BundleAsset" preserve="all"/>
-		<type fullname="xasset.BundleAssetAsync" preserve="all"/>
-		<type fullname="xasset.SceneAsset" preserve="all"/>
-		<type fullname="xasset.SceneAssetAsync" preserve="all"/>
-		<type fullname="xasset.WebAsset" preserve="all"/>
-		<type fullname="emo.LuaBehaviour" preserve="all"/>
+	    <type fullname="emo.LuaBehaviour" preserve="all"/>
 		<type fullname="emo.LuaManager" preserve="all"/>
 		
 	</assembly>

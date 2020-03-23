@@ -18,7 +18,7 @@ function M:ctor()
 end
 
 function M:Load(assetPath)
-    self.asset = Assets.LoadAsync(assetPath, typeof(GameObject))
+    self.asset = Assets.LoadAssetAsync(assetPath, typeof(GameObject))
     self.asset.completed = function(a) 
         if not self.closed then
             local prefab = a.asset

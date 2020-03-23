@@ -8,10 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0cc90c3a4b447e797c930c6fafa5e8, type: 3}
+  m_Script: {fileID: -1300898542, guid: a8020cedff12648089da6c8906101ace, type: 3}
   m_Name: Manifest
   m_EditorClassIdentifier: 
-  downloadURL: http://127.0.0.1:7888/
+  downloadURL: 
   activeVariants: []
   bundles:
   - lua/base_g
@@ -24,7 +24,6 @@ MonoBehaviour:
   - prefabs/loadingview
   - prefabs/messagebox
   - prefabs/uiroot
-  - sprites
   dirs:
   - Assets/Bytes/Lua/Base
   - Assets/Bytes/Lua/Logic/States
@@ -34,7 +33,6 @@ MonoBehaviour:
   - Assets/Bytes/Lua
   - Assets
   - Assets/Framework/Prefabs
-  - Assets/Demo/Sprites
   assets:
   - bundle: 0
     dir: 0
@@ -96,15 +94,3 @@ MonoBehaviour:
   - bundle: 9
     dir: 7
     name: UIRoot.prefab
-  - bundle: 10
-    dir: 8
-    name: blackSquare.png
-  - bundle: 10
-    dir: 8
-    name: log2.png
-  - bundle: 10
-    dir: 8
-    name: log3.png
-  - bundle: 10
-    dir: 8
-    name: UnityLogo.png

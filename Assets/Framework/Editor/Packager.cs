@@ -3,7 +3,7 @@ using UnityEditor;
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
-using xasset.editor;
+using libx;
 
 namespace emo.editor
 {

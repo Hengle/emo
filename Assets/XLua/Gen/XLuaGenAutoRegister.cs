@@ -109,25 +109,25 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(UnityEngine.Debug), UnityEngineDebugWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(xasset.Assets), xassetAssetsWrap.__Register);
+            translator.DelayWrapLoader(typeof(libx.Assets), libxAssetsWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(xasset.Asset), xassetAssetWrap.__Register);
+            translator.DelayWrapLoader(typeof(libx.AssetRequest), libxAssetRequestWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(xasset.BundleAsset), xassetBundleAssetWrap.__Register);
+            translator.DelayWrapLoader(typeof(libx.BundleAssetRequest), libxBundleAssetRequestWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(xasset.BundleAssetAsync), xassetBundleAssetAsyncWrap.__Register);
+            translator.DelayWrapLoader(typeof(libx.BundleAssetAsyncRequest), libxBundleAssetAsyncRequestWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(xasset.SceneAsset), xassetSceneAssetWrap.__Register);
+            translator.DelayWrapLoader(typeof(libx.SceneAssetRequest), libxSceneAssetRequestWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(xasset.SceneAssetAsync), xassetSceneAssetAsyncWrap.__Register);
+            translator.DelayWrapLoader(typeof(libx.SceneAssetAsyncRequest), libxSceneAssetAsyncRequestWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(xasset.WebAsset), xassetWebAssetWrap.__Register);
+            translator.DelayWrapLoader(typeof(libx.WebAssetRequest), libxWebAssetRequestWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(emo.LuaBehaviour), emoLuaBehaviourWrap.__Register);

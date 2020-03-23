@@ -9,7 +9,7 @@ GameStateNames = {
 }
 
 -- for cs
-Assets = CS.xasset.Assets
+Assets = CS.libx.Assets
 GameObject = CS.UnityEngine.GameObject
 -- for lua
 ActionManager = require "Mgrs/ActionManager"

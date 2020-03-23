@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using libx;
+using UnityEngine;
 using XLua;
 
 namespace emo
@@ -13,14 +14,17 @@ namespace emo
         LuaFunction _pauseFunc = null;
 
         // Use this for initialization
-        void Start()
+        System.Collections.IEnumerator Start()
         {
             DontDestroyOnLoad(gameObject);
-            LuaManager.Init(OnInited);
+            yield return Assets.Initialize();
+            OnInited();
         }
 
         private void OnInited()
         {
+            LuaManager.Init(Assets.assetBundleMode);
+
             _updateFunc = LuaManager.GetFunc<LuaFunction>("Update");
             _lateUpdateFunc = LuaManager.GetFunc<LuaFunction>("LateUpdate");
             _fixedUpdateFunc = LuaManager.GetFunc<LuaFunction>("FixedUpdate");

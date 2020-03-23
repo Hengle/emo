@@ -31,13 +31,12 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 7, 0, 0);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 6, 0, 0);
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "Register", _m_Register_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "Unregister", _m_Unregister_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "Init", _m_Init_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "Clear", _m_Clear_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "Dispose", _m_Dispose_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "OnInited", _m_OnInited_xlua_st_);
             
 			
             
@@ -134,15 +133,13 @@ namespace XLua.CSObjectWrap
         {
 		    try {
             
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
             
             
                 
                 {
-                    System.Action _succes = translator.GetDelegate<System.Action>(L, 1);
+                    bool _assetBundleMode = LuaAPI.lua_toboolean(L, 1);
                     
-                    emo.LuaManager.Init( _succes );
+                    emo.LuaManager.Init( _assetBundleMode );
                     
                     
                     
@@ -189,32 +186,6 @@ namespace XLua.CSObjectWrap
                 {
                     
                     emo.LuaManager.Dispose(  );
-                    
-                    
-                    
-                    return 0;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_OnInited_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-                
-                {
-                    System.Action _cb = translator.GetDelegate<System.Action>(L, 1);
-                    
-                    emo.LuaManager.OnInited( _cb );
                     
                     
                     

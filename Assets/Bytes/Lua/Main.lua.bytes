@@ -1,4 +1,4 @@
-require('init') 
+require('Init') 
 
 function Main()
     Game.Init()

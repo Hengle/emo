@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 3295125835
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 24e760d90f2f9369fb8f624c7d54695b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Bytes/Lua/Base/Action.lua.bytes
+- Assets/Bytes/Lua/Base/GameState.lua.bytes
+- Assets/Bytes/Lua/Base/Class.lua.bytes
+- Assets/Bytes/Lua/Base/View.lua.bytes
+Dependencies: []
