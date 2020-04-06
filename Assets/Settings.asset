@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 685664898, guid: 94282b8389c98492bb47a2f4e5c0acaf, type: 3}
   m_Name: Settings
   m_EditorClassIdentifier: 
-  runtimeMode: 1
+  runtimeMode: 0
   localServer: 0
   scenes:
   - Assets/Res/Init/Init.unity

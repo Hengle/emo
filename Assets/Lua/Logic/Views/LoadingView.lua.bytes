@@ -1,0 +1,24 @@
+local M = class('LoadingView', View)
+
+local Paths = {
+    text = 'Text',
+    slider = 'Slider',
+}
+
+local view = View.new()
+view:Load(Res.prefab_loading_view)  
+
+local function SetVisible(visible)
+    view:SetVisible(visible)
+end
+
+local function SetProgress(value, text) 
+    SetVisible(true)
+    view:SetText(text, Paths.text)
+    view:SetSlider(value, Paths.slider)
+end 
+
+return {
+    SetProgress = SetProgress,
+    SetVisible = SetVisible,
+}

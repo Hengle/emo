@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using libx;
 using XLua;
@@ -10,7 +9,7 @@ namespace emo
     {
         private static LuaEnv luaEnv = new LuaEnv(); 
         private static List<LuaBehaviour> luaBehaviours = new List<LuaBehaviour>();
-        private static Dictionary<string, AssetRequest> assets = new Dictionary<string, AssetRequest>();
+        private static Dictionary<string, byte[]> buffers = new Dictionary<string, byte[]>();
 
         public static void Register(LuaBehaviour lua)
         {
@@ -37,13 +36,9 @@ namespace emo
         }
 
         public static void Clear()
-        {
-            foreach (var item in assets)
-            {
-                item.Value.Release();
-            }
-            assets.Clear();
-        }
+        { 
+            buffers.Clear();
+        } 
 
         public static void Dispose()
         {
@@ -64,36 +59,65 @@ namespace emo
             return luaEnv.Global.Get<T>(name);
         }
 
-        private static byte[] ReadBytesFromAssetBundle(ref string filepath)
+        private const string luafile_format = "Assets/Lua/{0}.lua.bytes";
+
+        private static byte[] ReadBytesFromAssetBundle(ref string filename)
         {
-            var path = "Assets/Bytes/Lua/" + filepath + ".lua.bytes";
-            AssetRequest a; 
-            if (!assets.TryGetValue(path, out a))
+            var path = string.Format(luafile_format, filename); 
+            byte[] bytes;
+            if (!buffers.TryGetValue(path, out bytes))
             {
-                a = Assets.LoadAsset(path, typeof(TextAsset));
-                assets[path] = a;
-            }
-            var ta = a.asset as TextAsset;
-            if (ta != null)
-            {
-                return ta.bytes;
-            }
-            return null;
+                var request = Assets.LoadAsset(path, typeof(TextAsset));
+                var ta = request.asset as TextAsset;
+                if (ta != null)
+                { 
+                    bytes = ta.bytes;
+                    buffers[path] = bytes;
+                }
+                Resources.UnloadAsset(ta); 
+                request.Release();
+                request = null;
+            } 
+            return bytes;
         }
 
         private static byte[] ReadBytesFromEditor(ref string filename)
         {
-            var path = System.Environment.CurrentDirectory
-                + "/Lua/"
-                + filename
-                + ".lua";
-
+            var path = string.Format(luafile_format, filename);
             if (!System.IO.File.Exists(path))
             {
                 throw new System.IO.FileNotFoundException(path);
             }
 
-            return System.IO.File.ReadAllBytes(path);
+            byte[] bytes; 
+            if (!buffers.TryGetValue(path, out bytes))
+            {
+                bytes = System.IO.File.ReadAllBytes(path);
+                buffers[path] = bytes;
+            } 
+            return bytes;
+        } 
+
+        public static void AttachProfiler()
+        {
+            var attachProfiler = GetFunc<LuaFunction>("AttachProfiler"); 
+            if (attachProfiler != null)
+            {
+                attachProfiler.Call();
+                attachProfiler.Dispose();
+                attachProfiler = null; 
+            }
+        }
+        
+        public static void DetachProfiler()
+        { 
+            var detachProfiler = GetFunc<LuaFunction>("DetachProfiler");  
+            if (detachProfiler != null)
+            { 
+                detachProfiler.Call();
+                detachProfiler.Dispose();
+                detachProfiler = null;
+            }
         }
     }
 }

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4280980824
+CRC: 1370205009
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4de266269e92ff2c266145970f95c74a
+    Hash: 465d33f203827daef4f63a5d7e72055a
   TypeTreeHash:
     serializedVersion: 2
     Hash: ba30f2af1a87928e986272efbfa3c909
@@ -34,5 +34,5 @@ ClassTypes:
 - Class: 224
   Script: {instanceID: 0}
 Assets:
-- Assets/Framework/Prefabs/LoadingView.prefab
+- Assets/Prefabs/LoadingView.prefab
 Dependencies: []

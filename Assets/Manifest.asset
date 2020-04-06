@@ -14,25 +14,25 @@ MonoBehaviour:
   downloadURL: 
   activeVariants: []
   bundles:
-  - lua/base_g
-  - lua/logic/states_g
-  - lua/logic/views_g
-  - lua/logic_g
-  - lua/mgrs_g
-  - lua_g
+  - lua/base_x
+  - lua/logic/states_x
+  - lua/logic/views_x
+  - lua/logic_x
+  - lua/lua_x
+  - lua/mgrs_x
   - manifest
   - prefabs/loadingview
   - prefabs/messagebox
   - prefabs/uiroot
   dirs:
-  - Assets/Bytes/Lua/Base
-  - Assets/Bytes/Lua/Logic/States
-  - Assets/Bytes/Lua/Logic/Views
-  - Assets/Bytes/Lua/Logic
-  - Assets/Bytes/Lua/Mgrs
-  - Assets/Bytes/Lua
+  - Assets/Lua/Base
+  - Assets/Lua/Logic/States
+  - Assets/Lua/Logic/Views
+  - Assets/Lua/Logic
+  - Assets/Lua
+  - Assets/Lua/Mgrs
   - Assets
-  - Assets/Framework/Prefabs
+  - Assets/Prefabs
   assets:
   - bundle: 0
     dir: 0
@@ -58,30 +58,33 @@ MonoBehaviour:
   - bundle: 2
     dir: 2
     name: MessageBox.lua.bytes
-  - bundle: 2
-    dir: 2
-    name: UIRootView.lua.bytes
   - bundle: 3
     dir: 3
     name: Res.lua.bytes
   - bundle: 4
     dir: 4
-    name: ActionManager.lua.bytes
+    name: Define.lua.bytes
   - bundle: 4
     dir: 4
-    name: ViewManager.lua.bytes
-  - bundle: 5
-    dir: 5
-    name: Define.lua.bytes
-  - bundle: 5
-    dir: 5
     name: Game.lua.bytes
-  - bundle: 5
-    dir: 5
+  - bundle: 4
+    dir: 4
     name: Init.lua.bytes
+  - bundle: 4
+    dir: 4
+    name: LuaPanda.lua.bytes
+  - bundle: 4
+    dir: 4
+    name: Main.lua.bytes
+  - bundle: 4
+    dir: 4
+    name: Profiler.lua.bytes
   - bundle: 5
     dir: 5
-    name: Main.lua.bytes
+    name: ActionManager.lua.bytes
+  - bundle: 5
+    dir: 5
+    name: ViewManager.lua.bytes
   - bundle: 6
     dir: 6
     name: Manifest.asset

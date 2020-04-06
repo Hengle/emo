@@ -1,0 +1,64 @@
+--[[
+ Loading.lua.bytes
+
+ Author:
+     fjy<jiyuan.feng@live.com>
+
+ Copyright © 2020 fjy, All rights reserved.
+
+]]
+local M = class('Loading', GameState)
+
+local LoadingView = require 'Logic/Views/LoadingView'
+local MessageBox = require 'Logic/Views/MessageBox'
+
+function M:OnEnter()
+    self.loading = false   
+
+    MessageBox.Show({
+        title = 'Prepare to Loading',
+        text = '2',
+        ensureFunc = function()
+            MessageBox.Close()
+        end,
+        cancelFunc = function()
+            MessageBox.Close()
+        end,
+        closeFunc = function() 
+            self.frames = 0
+            self.loading = true
+        end
+    }) 
+
+    MessageBox.Show({
+        title = 'First Box',
+        text = '1',
+        ensureFunc = function()
+            MessageBox.Close()
+        end,
+        cancelFunc = function()
+            MessageBox.Close()
+        end,
+        closeFunc = function() 
+            
+        end
+    }) 
+end
+
+local maxframe = 100
+
+function M:Update()
+    if self.loading then
+        self.frames = self.frames + 1
+        local progress = self.frames / maxframe
+        LoadingView.SetProgress(progress, string.format('LOADING ... %.2f%%', progress * 100))
+        if self.frames == maxframe then
+            self.loading = false
+        end
+    end
+end
+
+function M:OnExit()
+end
+
+return M

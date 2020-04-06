@@ -1,34 +1,34 @@
 ManifestFileVersion: 0
-CRC: 621684580
+CRC: 2366932861
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: lua_g
+      Name: lua/base_x
       Dependencies: {}
     Info_1:
-      Name: lua/mgrs_g
+      Name: lua/logic_x
       Dependencies: {}
     Info_2:
-      Name: lua/logic_g
+      Name: lua/mgrs_x
       Dependencies: {}
     Info_3:
-      Name: lua/base_g
+      Name: lua/logic/states_x
       Dependencies: {}
     Info_4:
-      Name: lua/logic/views_g
+      Name: lua/logic/views_x
       Dependencies: {}
     Info_5:
-      Name: lua/logic/states_g
+      Name: manifest
       Dependencies: {}
     Info_6:
-      Name: prefabs/messagebox
-      Dependencies: {}
-    Info_7:
-      Name: prefabs/uiroot
-      Dependencies: {}
-    Info_8:
       Name: prefabs/loadingview
       Dependencies: {}
+    Info_7:
+      Name: prefabs/messagebox
+      Dependencies: {}
+    Info_8:
+      Name: prefabs/uiroot
+      Dependencies: {}
     Info_9:
-      Name: manifest
+      Name: lua/lua_x
       Dependencies: {}

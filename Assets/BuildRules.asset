@@ -20,4 +20,16 @@ MonoBehaviour:
   searchPatternScene: '*.unity'
   searchPatternDir: '*'
   unshared: []
-  rules: []
+  rules:
+  - searchPath: Assets/Lua
+    searchPattern: '*'
+    assetBundleName: 
+    searchDirOnly: 1
+    unshared: 0
+    searchOption: 1
+  - searchPath: Assets/Prefabs
+    searchPattern: '*.prefab'
+    assetBundleName: 
+    searchDirOnly: 0
+    unshared: 0
+    searchOption: 1

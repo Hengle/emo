@@ -1,0 +1,64 @@
+local Paths = {
+    text = 'Content/Text',
+    title = 'Content/Title',
+    ensure = 'Content/Options/Ensure',
+    cancel = 'Content/Options/Cancel',
+    ensure_text = 'Content/Options/Ensure/Text',
+    cancel_text = 'Content/Options/Cancel/Text'
+}
+
+local views = {}
+
+local function Show(context)
+    local view = View.new()
+    view:Load(Res.prefab_message_box)
+    view:SetText(context.title or 'Title', Paths.title)
+    view:SetText(context.text or 'Content', Paths.text)
+    view:SetText(context.ensure_text or 'Ensure', Paths.ensure_text)
+    view:SetText(context.cancel_text or 'Cancel', Paths.cancel_text)
+    view:SetClick(
+        function()
+            if context.closeFunc then
+                context.closeFunc()
+            end
+            if context.cancelFunc then
+                context.cancelFunc()
+            end  
+        end,
+        Paths.cancel
+    )
+    view:SetClick(
+        function()
+            if context.ensureFunc then
+                context.ensureFunc()
+            end
+            if context.closeFunc then
+                context.closeFunc()
+            end
+        end,
+        Paths.ensure
+    ) 
+    table.insert(views, view)
+end
+
+local function Close()
+    local size = #views
+    if size > 0 then
+        local view = views[size]
+        view:Close()
+        table.remove(views, size)
+    end
+end
+
+local function CloseAll()
+    for index, value in ipairs(views) do
+        value:Close()
+    end
+    views = {}
+end
+
+return {
+    Show = Show,
+    Close = Close,
+    CloseAll = CloseAll,
+}

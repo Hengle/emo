@@ -1,0 +1,36 @@
+--[[
+ lua.bytes
+
+ Author:
+     fjy<jiyuan.feng@live.com>
+
+ Copyright © 2020 fjy, All rights reserved.
+
+]]
+
+local actions = {}
+
+local function Add(action)
+    table.insert(actions, action)
+end
+
+local function Remove(action)
+    for i, v in ipairs(actions) do
+        if v == action then 
+            table.remove(actions, i)
+            break;
+        end
+    end
+end
+
+local function Update()
+    for i, v in ipairs(actions) do
+        v:Update()
+    end
+end
+
+return {
+    Add = Add,
+    Remove = Remove,
+    Update = Update,
+}

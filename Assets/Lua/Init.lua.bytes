@@ -1,0 +1,13 @@
+--[[
+ Init.lua.bytes
+
+ Author:
+     fjy<jiyuan.feng@live.com>
+
+ Copyright © 2020 fjy, All rights reserved.
+
+]]
+
+require 'Base/Class'
+require 'Logic/Res'
+require 'Define'

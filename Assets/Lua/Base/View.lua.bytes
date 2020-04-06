@@ -1,0 +1,166 @@
+--[[
+ View.lua.bytes
+
+ Author:
+     fjy<jiyuan.feng@live.com>
+
+ Copyright © 2020 fjy, All rights reserved.
+
+]]
+local M = class("View")
+
+function M:ctor()
+    self.sliders = {}
+    self.texts = {}
+    self.actions = {}
+    self.clicks = {}
+    self.enabled = true
+    self.visible = true
+    ViewManager.Add(self)
+end
+
+function M:SetVisible(visible)
+    self.visible = visible
+    if self.canvas then
+        self.canvas.enabled = self.visible
+    end
+end
+
+function M:SetEnabled(enabled)
+    self.enabled = enabled
+    if self.graphicRaycaster then
+        self.graphicRaycaster.enabled = self.enabled
+    end
+end
+
+function M:Load(assetPath)
+    self.asset = Assets.LoadAssetAsync(assetPath, typeof(GameObject))
+    local OnAssetLoaded = function(a)
+        if not self.closed then
+            local prefab = a.asset
+            local go = GameObject.Instantiate(prefab)
+            go.name = prefab.name
+            self.gameObject = go
+            self.luaBehaviour = self.gameObject:AddComponent(typeof(CS.emo.LuaBehaviour))
+            local root = ViewManager.viewRoot
+            if root == nil then
+                ViewManager.BindRoot(self)
+                local transform = go.transform
+                ViewManager.viewRoot = transform:Find("Canvas")
+                ViewManager.viewCamera = transform:Find("Camera")
+                if self.onloaded then
+                    self.onloaded(self)
+                end
+            else
+                self.canvas = self.gameObject:AddComponent(typeof(CS.UnityEngine.Canvas))
+                self.graphicRaycaster = self.gameObject:AddComponent(typeof(CS.UnityEngine.UI.GraphicRaycaster))
+                self.transform = self.gameObject.transform
+                if not self.parent then
+                    self:SetParent(root)
+                end
+                self:OnLoaded()
+            end
+        end
+    end
+
+    if self.asset.completed then
+        self.asset.completed = self.asset.completed + OnAssetLoaded
+    else
+        self.asset.completed = OnAssetLoaded
+    end
+end
+
+function M:Close()
+    ViewManager.Remove(self)
+    self.onloaded = nil
+    for i, v in ipairs(self.actions) do
+        v:Dispose()
+    end
+    self:OnClose()
+    GameObject.Destroy(self.gameObject)
+    self.asset:Release()
+    for key, value in pairs(self) do
+        value = nil
+    end
+    self.closed = true
+end
+
+function M:RemoveAction(action)
+    for i, v in ipairs(self.actions) do
+        if v == action then
+            table.remove(self.actions, i)
+            break
+        end
+    end
+end
+
+function M:RunAction(action)
+    table.insert(self.actions, action)
+    local completed = action.completed
+    action.completed = function()
+        self:RemoveAction(action)
+        completed()
+    end
+    action:Start()
+end
+
+function M:SetParent(parent, worldPositionStays)
+    self.parent = parent
+    self.worldPositionStays = worldPositionStays or false
+    if self.loaded then
+        self.transform:SetParent(self.parent, self.worldPositionStays)
+    end
+end
+
+function M:OnLoaded()
+    for key, value in pairs(self.texts) do
+        self.luaBehaviour:SetText(value, key)
+    end
+    for key, value in pairs(self.sliders) do
+        self.luaBehaviour:SetSlider(value, key)
+    end
+    for key, value in pairs(self.clicks) do
+        self.luaBehaviour:SetButtonClick(key, value)
+    end
+    self.canvas.enabled = self.visible
+    self.graphicRaycaster.enabled = self.enabled
+    self.transform:SetParent(self.parent, self.worldPositionStays)
+    self.loaded = true
+    if self.onloaded then
+        self.onloaded(self)
+    end
+end
+
+function M:SetText(value, path)
+    if self.loaded then
+        self.luaBehaviour:SetText(value, path)
+    end
+    self.texts[path] = value
+end
+
+function M:GetText(path)
+    return self.texts[path]
+end
+
+function M:SetSlider(value, path)
+    if self.loaded then
+        self.luaBehaviour:SetSlider(value, path)
+    end
+    self.sliders[path] = value
+end
+
+function M:SetClick(value, path)
+    if self.loaded then
+        self.luaBehaviour:SetButtonClick(path, value)
+    end
+    self.clicks[path] = value
+end
+
+function M:GetSlider(path)
+    return self.sliders[path]
+end
+
+function M:OnClose()
+end
+
+return M

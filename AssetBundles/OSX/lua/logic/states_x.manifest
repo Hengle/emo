@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 1028894930
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 41babad391ff85753d19a9a8e14bb066
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Lua/Logic/States/Loading.lua.bytes
+- Assets/Lua/Logic/States/Initialize.lua.bytes
+Dependencies: []

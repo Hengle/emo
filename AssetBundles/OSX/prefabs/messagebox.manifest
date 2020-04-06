@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 80300876
+CRC: 1156246638
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 6d520b4b25bab508acf9eece5be3c1ec
+    Hash: b049ccbe61780f5b72ee16bed292fb78
   TypeTreeHash:
     serializedVersion: 2
     Hash: bbd845d06ba122fde6200966fe646161
@@ -38,5 +38,5 @@ ClassTypes:
 - Class: 224
   Script: {instanceID: 0}
 Assets:
-- Assets/Framework/Prefabs/MessageBox.prefab
+- Assets/Prefabs/MessageBox.prefab
 Dependencies: []

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 698676274
+CRC: 4246715811
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e6cac6e5dac7180fd4512844de6e00a6
+    Hash: 5aaaf4f9f0eaff29412ed15fe83ba545
   TypeTreeHash:
     serializedVersion: 2
     Hash: e62ca2ab5a8fa0b1f57cdb993940177a
@@ -28,5 +28,5 @@ ClassTypes:
 - Class: 224
   Script: {instanceID: 0}
 Assets:
-- Assets/Framework/Prefabs/UIRoot.prefab
+- Assets/Prefabs/UIRoot.prefab
 Dependencies: []

@@ -1,0 +1,35 @@
+--[[
+ lua.bytes
+
+ Author:
+     fjy<jiyuan.feng@live.com>
+
+ Copyright © 2020 fjy, All rights reserved.
+
+]]
+
+local views = {}  
+
+local function BindRoot(root)
+    local gameObject = root.gameObject 
+    GameObject.DontDestroyOnLoad(gameObject) 
+end
+
+local function Add(view)
+    table.insert(views, view)
+end 
+
+local function Remove(view)
+    for i, v in ipairs(views) do
+        if v == view then
+            table.remove(views, i)
+            return
+        end
+    end
+end 
+ 
+return { 
+    BindRoot = BindRoot,
+    Add = Add,
+    Remove = Remove
+}

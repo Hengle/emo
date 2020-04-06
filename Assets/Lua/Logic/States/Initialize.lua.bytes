@@ -1,0 +1,24 @@
+--[[
+ Initialize.lua.bytes
+
+ Author:
+     fjy<jiyuan.feng@live.com>
+
+ Copyright © 2020 fjy, All rights reserved.
+
+]]
+
+local M = class('Initialize', GameState)
+
+function M:OnEnter()
+    local view = View.new()
+    view.onloaded = function(view) 
+        Game.ChangeState(GameStateID.Loading)
+    end
+    view:Load(Res.prefab_uiroot)
+end
+
+function M:OnExit()
+end
+
+return M
