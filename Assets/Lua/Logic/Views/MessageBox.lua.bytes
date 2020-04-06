@@ -1,3 +1,13 @@
+--[[
+ MessageBox.lua.bytes
+
+ Author:
+     fjy<jiyuan.feng@live.com>
+
+ Copyright © 2020 fjy, All rights reserved.
+
+]]
+
 local Paths = {
     text = 'Content/Text',
     title = 'Content/Title',

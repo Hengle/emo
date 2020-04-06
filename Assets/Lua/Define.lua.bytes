@@ -21,6 +21,7 @@ GameStateNames = {
 -- for cs
 Assets = CS.libx.Assets
 GameObject = CS.UnityEngine.GameObject
+LuaManager = CS.emo.LuaManager
 -- for lua
 ActionManager = require 'Mgrs/ActionManager'
 ViewManager = require 'Mgrs/ViewManager'

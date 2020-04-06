@@ -29,20 +29,6 @@ function M:OnEnter()
             self.loading = true
         end
     }) 
-
-    MessageBox.Show({
-        title = 'First Box',
-        text = '1',
-        ensureFunc = function()
-            MessageBox.Close()
-        end,
-        cancelFunc = function()
-            MessageBox.Close()
-        end,
-        closeFunc = function() 
-            
-        end
-    }) 
 end
 
 local maxframe = 100

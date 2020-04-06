@@ -36,8 +36,8 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "Initialize", _m_Initialize_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "LoadSceneAsync", _m_LoadSceneAsync_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "UnloadScene", _m_UnloadScene_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "LoadAsset", _m_LoadAsset_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "LoadAssetAsync", _m_LoadAssetAsync_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "LoadAsset", _m_LoadAsset_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "Unload", _m_Unload_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetRelativeUpdatePath", _m_GetRelativeUpdatePath_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetDownloadURL", _m_GetDownloadURL_xlua_st_);
@@ -208,34 +208,6 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_LoadAsset_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-                
-                {
-                    string _path = LuaAPI.lua_tostring(L, 1);
-                    System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
-                    
-                        libx.AssetRequest gen_ret = libx.Assets.LoadAsset( _path, _type );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_LoadAssetAsync_xlua_st_(RealStatePtr L)
         {
 		    try {
@@ -250,6 +222,34 @@ namespace XLua.CSObjectWrap
                     System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     
                         libx.AssetRequest gen_ret = libx.Assets.LoadAssetAsync( _path, _type );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_LoadAsset_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+            
+                
+                {
+                    string _path = LuaAPI.lua_tostring(L, 1);
+                    System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
+                    
+                        libx.AssetRequest gen_ret = libx.Assets.LoadAsset( _path, _type );
                         translator.Push(L, gen_ret);
                     
                     

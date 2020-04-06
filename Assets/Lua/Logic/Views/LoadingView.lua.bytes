@@ -1,3 +1,13 @@
+--[[
+ LoadingView.lua.bytes
+
+ Author:
+     fjy<jiyuan.feng@live.com>
+
+ Copyright © 2020 fjy, All rights reserved.
+
+]]
+
 local M = class('LoadingView', View)
 
 local Paths = {

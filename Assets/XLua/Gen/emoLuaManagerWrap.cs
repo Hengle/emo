@@ -31,12 +31,14 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 6, 0, 0);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 8, 0, 0);
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "Register", _m_Register_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "Unregister", _m_Unregister_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "Init", _m_Init_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "Clear", _m_Clear_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "Dispose", _m_Dispose_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "AttachProfiler", _m_AttachProfiler_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "DetachProfiler", _m_DetachProfiler_xlua_st_);
             
 			
             
@@ -186,6 +188,52 @@ namespace XLua.CSObjectWrap
                 {
                     
                     emo.LuaManager.Dispose(  );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_AttachProfiler_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+            
+            
+                
+                {
+                    
+                    emo.LuaManager.AttachProfiler(  );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_DetachProfiler_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+            
+            
+                
+                {
+                    
+                    emo.LuaManager.DetachProfiler(  );
                     
                     
                     

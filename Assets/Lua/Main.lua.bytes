@@ -1,7 +1,26 @@
 require('LuaPanda').start('127.0.0.1', 8818)
 require('Init') 
 
+local profiler
+
+function AttachProfiler()
+    print("[Main]AttachProfiler")
+    if not profiler then
+        profiler = require("Profiler")
+        profiler:start()
+    end
+end
+
+function DetachProfiler()
+    print("[Main]DetachProfiler")
+    if profiler then
+        profiler:stop()
+        profiler = nil
+    end
+end
+
 function Main()
+    -- AttachProfiler() -- 在 Unity 的 Profiler 中开启针对 lua 的性能开销分析
     Game.Init()
 end
 
